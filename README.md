@@ -8,7 +8,7 @@
 - `faq.html`：よくある質問
 - `guide.html`：参加方法
 - `contact.html`：お問い合わせ
-- `data/events.json`：イベント情報。
+- `data/events.json`：イベント情報。HTMLに直接イベントを書かない構造です。
 - `three_scene/`：Three.js専用フォルダ
   - `index.html`：Three.js窓のHTML
   - `scene.css`：Three.js画面上の装飾文字・ガラスUI
@@ -59,6 +59,11 @@
 - 集客用画像 `assets/images/worldcup_japan_kamiyacho.png` を追加しました。
 
 
-## v9変更
-- スマホ時でも「LINEで簡単申込み」部分は常時タップ可能です。
-- 3D操作中はボタンを右下に退避し、左下ジョイスティックを押しやすくしました。
+## スマホ版Three.js操作
+スマホでは、初期状態でThree.js iframeのタッチ操作を無効化しています。
+`3D空間を操作する` ボタンを押した時だけ iframe の `pointer-events` を有効化し、ページスクロールを邪魔しない構造にしています。
+編集箇所は `index.html` の `threeHero`、`style.css` の `Mobile Three.js touch gate`、`main.js` の `initThreeTouchGate()` です。
+
+
+## 大鳥居3Dモデル
+`assets/models/small_torii.glb` を `three_scene/scene.js` から読み込む構成です。位置・大きさ・向きは `realToriiRoot.position`、`realToriiRoot.rotation.y`、`targetHeight` を編集すると調整できます。原爆ドームはスマホ負荷を下げるため、軽量なThree.js内蔵モデルに戻しています。
