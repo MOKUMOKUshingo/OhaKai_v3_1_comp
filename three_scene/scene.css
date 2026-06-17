@@ -68,21 +68,89 @@
 }
 
 
-/* --- Shorter hero overlay inspired by the soft tea-party image --- */
-.shortHero{
-  width:min(920px,92vw);
-  padding:18px 22px 20px;
-  border-radius:0 0 32px 32px;
-  background:linear-gradient(180deg,rgba(255,255,255,.48),rgba(255,246,232,.16));
-}
-.shortHero .heroCatch{font-size:clamp(17px,2.1vw,27px);color:#fff8e8;}
-.shortHero .heroTitle{font-size:clamp(48px,7.2vw,98px);letter-spacing:.02em;}
-.shortHero .heroRibbon{margin-bottom:0;background:rgba(239,95,120,.92);}
-.shortHero .heroLineButton{margin-left:12px;}
-.shortHero .heroFeatures{display:none;}
+/* --- v3 smartphone hero overlay: compact, neat, and leaves the 3D view open --- */
 @media(max-width:800px){
-  .shortHero{padding:10px 10px 12px;width:94vw;}
-  .shortHero .heroTitle{font-size:42px;}
-  .shortHero .heroRibbon{font-size:12px;}
-  .shortHero .heroLineButton{display:none;}
+  html,body{height:100%;}
+  #heroOverlay{
+    padding:calc(env(safe-area-inset-top,0px) + 8px) 10px 0;
+  }
+  .heroGlass{
+    width:calc(100vw - 20px);
+    max-width:420px;
+    padding:10px 10px 11px;
+    border-radius:0 0 18px 18px;
+    background:linear-gradient(180deg,rgba(255,255,255,.52),rgba(255,255,255,.18));
+  }
+  .heroCatch{
+    font-size:13px;
+    letter-spacing:.05em;
+    margin-bottom:3px;
+  }
+  .heroTitle{
+    font-size:clamp(29px,9.2vw,40px);
+    line-height:1.02;
+    letter-spacing:0;
+    margin-bottom:7px;
+    white-space:nowrap;
+  }
+  .heroTitle .brown,
+  .heroTitle .green,
+  .heroTitle .pink{
+    text-shadow:0 2px 0 #fff,0 6px 14px rgba(0,0,0,.30);
+  }
+  .heroRibbon{
+    display:block;
+    width:100%;
+    font-size:11px;
+    line-height:1.35;
+    padding:6px 10px;
+    margin:0 0 7px;
+    white-space:normal;
+  }
+  .heroFeatures{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-radius:13px;
+  }
+  .heroFeature{
+    padding:7px 3px;
+    border-right:1px dashed rgba(94,47,0,.22);
+    min-width:0;
+  }
+  .heroFeature b{
+    font-size:11px;
+    line-height:1.2;
+    margin:0;
+    white-space:nowrap;
+  }
+  .heroFeature span{
+    display:none;
+  }
+  #touchHint{
+    bottom:calc(env(safe-area-inset-bottom,0px) + 8px);
+    width:auto;
+    max-width:calc(100vw - 24px);
+    font-size:10px;
+    padding:7px 10px;
+    white-space:nowrap;
+  }
+  #cross{display:none;}
+  #joy{
+    left:18px;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 42px);
+    width:104px;
+    height:104px;
+  }
+  #stick{
+    left:34px;
+    top:34px;
+    width:36px;
+    height:36px;
+  }
+}
+@media(max-width:380px){
+  .heroTitle{font-size:27px;}
+  .heroCatch{font-size:12px;}
+  .heroRibbon{font-size:10px;}
+  .heroFeature b{font-size:10px;}
 }

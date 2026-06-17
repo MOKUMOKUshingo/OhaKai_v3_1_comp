@@ -63,50 +63,44 @@
 }
 
 
-/* --- Kawaii short direction / compact event cards --- */
-body{
-  background:
-    radial-gradient(circle at 8% 6%, rgba(255,218,230,.75), transparent 24%),
-    radial-gradient(circle at 92% 10%, rgba(255,230,171,.55), transparent 25%),
-    var(--bg);
+/* --- v3 mobile layout fixes --- */
+@media(max-width:800px){
+  header{position:sticky;top:0;}
+  .nav{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:8px 10px;
+    padding:9px 12px 8px;
+    overflow:visible;
+  }
+  .logo{
+    grid-column:1 / 2;
+    font-size:20px;
+    line-height:1.15;
+    margin:0;
+    white-space:nowrap;
+  }
+  .logo small{font-size:9px;letter-spacing:.02em;}
+  .search-icon{grid-column:2 / 3;grid-row:1 / 2;font-size:24px;align-self:center;}
+  .nav a{
+    grid-column:auto;
+    font-size:12px;
+    white-space:nowrap;
+    padding:5px 8px;
+    border-radius:999px;
+    background:rgba(255,255,255,.13);
+  }
+  .nav a span{display:none;}
+  .three-hero-full{
+    height:76svh;
+    min-height:560px;
+    max-height:720px;
+  }
+  main{padding-top:20px;}
 }
-.event-list:has(.compact-event){
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.compact-event{
-  border-radius:18px;
-  background:#fff;
-  overflow:hidden;
-}
-.compact-event .event-thumb{
-  height:168px;
-  border-radius:18px 18px 0 0;
-}
-.compact-event .compact-link{display:block;text-decoration:none;color:inherit;}
-.compact-title{
-  margin:0;
-  padding:12px 14px 16px;
-  font-size:16px;
-  line-height:1.55;
-  font-weight:900;
-  color:#5e2f00;
-  background:#fff;
-}
-.section-title{
-  display:inline-block;
-  background:#fff;
-  border-left:8px solid var(--pink);
-  border-radius:0 999px 999px 0;
-  box-shadow:var(--shadow);
-  padding:10px 22px 10px 16px;
-}
-.three-hero-full{
-  min-height:560px;
-  max-height:760px;
-}
-@media(max-width:900px){
-  .event-list:has(.compact-event){grid-template-columns:1fr;}
-  .compact-event .event-thumb{height:190px;}
-  .compact-title{font-size:15px;}
+@media(max-width:520px){
+  .nav{grid-template-columns:1fr auto;}
+  .nav a{font-size:11px;padding:5px 7px;}
+  .logo{font-size:18px;}
+  .three-hero-full{height:74svh;min-height:540px;}
 }

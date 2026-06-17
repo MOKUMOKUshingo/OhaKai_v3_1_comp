@@ -1,13 +1,14 @@
 
 import * as THREE from 'three';
 
+const isMobileView = window.matchMedia('(max-width: 800px)').matches;
 const scene=new THREE.Scene();
 scene.background=new THREE.Color(0xf0a26a);
 scene.fog=new THREE.FogExp2(0xf0a26a,0.012);
 const camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,500);
-camera.position.set(8,3.0,18);
+camera.position.set(isMobileView ? 6 : 8, 3.0, isMobileView ? 24 : 18);
 const renderer=new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.appendChild(renderer.domElement);
+renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio, isMobileView ? 1.5 : 2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.appendChild(renderer.domElement);
 
 const miniRenderer=new THREE.WebGLRenderer({canvas:document.getElementById('miniCanvas'),alpha:true,antialias:true});
 miniRenderer.setSize(230,170);miniRenderer.setPixelRatio(1);
@@ -77,7 +78,7 @@ function makePerson(x,z,dir=1){const g=new THREE.Group();g.position.set(x,0,z);g
 for(let i=0;i<18;i++) makePerson(16+Math.random()*7,-42+i*4.5,Math.random()>.5?1:-1);
 
 // controls
-let yaw=-.25,pitch=-.08,drag=false,lastX=0,lastY=0,zoom=70;const keys={};
+let yaw=isMobileView ? -0.16 : -.25,pitch=isMobileView ? -0.06 : -.08,drag=false,lastX=0,lastY=0,zoom=isMobileView ? 78 : 70;const keys={};
 addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.()});
 addEventListener('keyup',e=>keys[e.key.toLowerCase()]=false);
 function rotate(dx,dy){yaw-=dx*.004;pitch-=dy*.004;pitch=Math.max(-1.25,Math.min(1.25,pitch));}
@@ -88,6 +89,7 @@ joy.addEventListener('touchstart',e=>{joyActive=true},{passive:false});joy.addEv
 renderer.domElement.addEventListener('touchmove',e=>{if(e.touches.length===1&&!joyActive){const t=e.touches[0];if(lastX)rotate(t.clientX-lastX,t.clientY-lastY);lastX=t.clientX;lastY=t.clientY}},{passive:false});renderer.domElement.addEventListener('touchend',()=>{lastX=0;lastY=0});
 
 // mini map scene overlay uses same scene from top
+camera.fov=zoom;camera.updateProjectionMatrix();
 const marker=new THREE.Mesh(new THREE.SphereGeometry(1.0,16,8),new THREE.MeshBasicMaterial({color:0x35a9ff}));marker.position.y=1.5;scene.add(marker);
 
 const clock=new THREE.Clock();

@@ -39,12 +39,6 @@ function eventCard(ev){
     </div>
   </article>`;
 }
-function compactEventCard(ev){
-  return `<article class="event-card compact-event">
-    <a class="compact-link" href="${lineLink(ev)}" target="_blank" rel="noopener">${eventImageHtml(ev)}</a>
-    <p class="compact-title">${ymdLabel(ev.date)} ${ev.time}〜「${ev.title}」＠${ev.place}</p>
-  </article>`;
-}
 function initEventPage(){
   const list = document.querySelector('#eventList');
   const tabs = document.querySelector('#placeTabs');
@@ -66,7 +60,7 @@ function initEventPage(){
 function initHomeEvents(){
   const list = document.querySelector('#homeEvents');
   if(!list) return;
-  list.innerHTML = allEvents.slice(0,3).map(compactEventCard).join('');
+  list.innerHTML = allEvents.slice(0,3).map(eventCard).join('');
 }
 function initSearch(){
   const open = document.querySelector('#openSearch');
