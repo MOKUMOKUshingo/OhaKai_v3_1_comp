@@ -197,3 +197,18 @@
   .instagram-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
   .promo-service-card h2,.instagram-head h2{font-size:24px;}
 }
+
+/* World Cup event highlight */
+.event-card.featured-event{
+  border:2px solid rgba(237,30,113,.45);
+  box-shadow:0 14px 34px rgba(237,30,113,.18), var(--shadow);
+}
+.event-card.featured-event .event-body h3::before{
+  content:"⚽ ";
+}
+.event-thumb.image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}

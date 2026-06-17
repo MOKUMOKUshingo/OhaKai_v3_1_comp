@@ -15,7 +15,7 @@ async function loadEvents(){
   const res = await fetch('data/events.json');
   const data = await res.json();
   LINE_URL = data.site?.lineUrl || LINE_URL;
-  allEvents = Array.isArray(data) ? data : (data.events || []);
+  allEvents = (Array.isArray(data) ? data : (data.events || [])).slice().sort((a,b)=>`${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
   allPlaces = Array.isArray(data.places) ? data.places : [...new Set(allEvents.map(e=>e.place))];
   initEventPage();
   initHomeEvents();
@@ -28,7 +28,7 @@ function eventImageHtml(ev){
   return `<div class="event-thumb image"><img src="${src}" alt="${alt}" loading="lazy"></div>`;
 }
 function eventCard(ev){
-  return `<article class="event-card" data-place="${ev.place}" data-key="${ev.title} ${ev.place} ${ev.genre} ${ev.age}">
+  return `<article class="event-card ${ev.id==='ev_worldcup_japan_tunisia'?'featured-event':''}" data-place="${ev.place}" data-key="${ev.title} ${ev.place} ${ev.genre} ${ev.age}">
     ${eventImageHtml(ev)}
     <div class="event-body">
       <h3>${ev.title}</h3>
