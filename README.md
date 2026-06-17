@@ -66,4 +66,4 @@
 
 
 ## 大鳥居3Dモデル
-`assets/models/small_torii.glb` を `three_scene/scene.js` から読み込む構成です。位置・大きさ・向きは `realToriiRoot.position`、`realToriiRoot.rotation.y`、`targetHeight` を編集すると調整できます。原爆ドームはスマホ負荷を下げるため、軽量なThree.js内蔵モデルに戻しています。
+`assets/models/torii.glb` を `three_scene/scene.js` から読み込む構成です。位置・大きさ・向きは `realToriiRoot.position`、`realToriiRoot.rotation.y`、`targetHeight` を編集すると調整できます。

@@ -7,8 +7,7 @@ const scene=new THREE.Scene();
 scene.background=new THREE.Color(0xf0a26a);
 scene.fog=new THREE.FogExp2(0xf0a26a,0.012);
 const camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,500);
-// Camera starts slightly behind the close torii so it appears right in front of the viewer.
-camera.position.set(isMobileView ? 0 : 1.5, 3.0, isMobileView ? 24 : 21);
+camera.position.set(isMobileView ? 0 : 1.5, 3.0, isMobileView ? 23 : 20);
 const renderer=new THREE.WebGLRenderer({antialias:true});
 renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio, isMobileView ? 1.5 : 2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;document.body.appendChild(renderer.domElement);
 
@@ -22,7 +21,7 @@ const fill=new THREE.DirectionalLight(0x7da6ff,.55);fill.position.set(30,12,20);
 
 function mat(c,r=.75,m=0){return new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});}
 const stone=mat(0x8f8172,.95), darkStone=mat(0x4d4945,.95), brick=mat(0x7f5d4c,.95), toriiMat=mat(0xe33a20,.55), roofMat=mat(0x243f3a,.75), wood=mat(0x5a331f,.8), pathMat=mat(0xa58c78,.9), grassMat=mat(0x536b38,.9);
-const waterMat=new THREE.MeshStandardMaterial({color:0x244f72,roughness:.18,metalness:.25,transparent:true,opacity:.86});
+const waterMat=new THREE.MeshStandardMaterial({color:0x126e74,roughness:.18,metalness:.25,transparent:true,opacity:.86});
 
 function box(w,h,d,x,y,z,material,group=scene){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;group.add(o);return o;}
 function cyl(r,h,x,y,z,material,group=scene,seg=24){const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg),material);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;group.add(o);return o;}
@@ -42,7 +41,7 @@ for(let i=0;i<30;i++){const c=new THREE.Mesh(new THREE.SphereGeometry(1+Math.ran
 // mountains
 const mMat=mat(0x5c6070,.9);for(let i=0;i<16;i++){const cone=new THREE.Mesh(new THREE.ConeGeometry(8+Math.random()*8,10+Math.random()*8,4),mMat);cone.position.set(-70+i*10,4,-75-Math.random()*12);cone.rotation.y=Math.PI/4;scene.add(cone)}
 
-// Atomic Bomb Dome fallback - right rear. This lightweight procedural version is used instead of the heavy GLB model.
+// Atomic Bomb Dome fallback - right rear. Lightweight built-in model is used for mobile performance.
 const domeG=new THREE.Group();domeG.position.set(27,0,-32);domeG.rotation.y=-0.35;scene.add(domeG);
 box(14,7,8,0,3.5,0,brick,domeG);box(4.2,12,4.2,-2.2,6,-.7,stone,domeG);
 // damaged missing chunks using dark panels/windows
@@ -60,14 +59,12 @@ for(let i=0;i<18;i++) box(.8+Math.random()*1.4,.35+Math.random()*.8,.55+Math.ran
 
 // Itsukushima Shrine Torii on water.
 // A simple torii is kept as a fallback while the external GLB model is loading.
-const torii=new THREE.Group();
-// Fallback torii: placed close to the opening camera view.
-torii.position.set(0,0,9.2);scene.add(torii);
+const torii=new THREE.Group();torii.position.set(0,0,-9.5);scene.add(torii);
 for(const x of [-5,5]){cyl(.35,9,x,4.5,0,toriiMat,torii,24);cyl(.48,.8,x,.45,0,toriiMat,torii,24)}
 box(12.4,.8,1.0,0,8.2,0,toriiMat,torii);box(14.6,.65,1.0,0,9.15,0,toriiMat,torii);box(7.8,.55,.9,0,5.1,0,toriiMat,torii);box(1.0,3.0,.8,0,6.7,0,toriiMat,torii);
 torii.userData.isFallbackTorii=true;
 
-const shrine=new THREE.Group();shrine.position.set(-8,0,-24);scene.add(shrine);box(11,2.4,6,0,1.2,0,mat(0xd9b173,.75),shrine);box(12,.3,7,0,2.55,0,wood,shrine);const r=new THREE.Mesh(new THREE.ConeGeometry(8,2,4),roofMat);r.rotation.y=Math.PI/4;r.scale.z=.55;r.position.y=3.6;r.castShadow=true;shrine.add(r);
+const shrine=new THREE.Group();shrine.position.set(-8,0,-27);scene.add(shrine);box(11,2.4,6,0,1.2,0,mat(0xd9b173,.75),shrine);box(12,.3,7,0,2.55,0,wood,shrine);const r=new THREE.Mesh(new THREE.ConeGeometry(8,2,4),roofMat);r.rotation.y=Math.PI/4;r.scale.z=.55;r.position.y=3.6;r.castShadow=true;shrine.add(r);
 for(let x=-12;x<2;x+=3) for(let z=-32;z<-18;z+=4) cyl(.16,1.4,x,.7,z,wood,scene,10);
 
 // reflection: mirrored torii/shrine/dome silhouettes just under water
@@ -93,10 +90,23 @@ addReflection(domeG,.10);
 // Real torii model: assets/models/small_torii.glb
 // three_scene/index.html is one folder below the site root, so the path is ../assets/models/small_torii.glb
 const realToriiRoot=new THREE.Group();
-// Put the torii near the opening camera so it has immediate visual impact.
-realToriiRoot.position.set(0,0.05,9.5);
+realToriiRoot.position.set(0,-0.42,-8.3);
 realToriiRoot.rotation.y=Math.PI; // front and close to the opening camera view
 scene.add(realToriiRoot);
+// Model base cover: lower the GLB into the water and add subtle water/stone masks so the foot texture is less visible.
+const toriiBaseCoverMat=new THREE.MeshStandardMaterial({color:0x1f6f74,roughness:.32,metalness:.18,transparent:true,opacity:.72});
+const toriiBaseCover=new THREE.Mesh(new THREE.BoxGeometry(15.5,.32,2.9),toriiBaseCoverMat);
+toriiBaseCover.position.set(0,.06,-8.3);
+toriiBaseCover.receiveShadow=true;
+scene.add(toriiBaseCover);
+const toriiStoneBaseMat=mat(0x6f6a63,.95);
+for(const x of [-4.8,4.8]){
+  const base=new THREE.Mesh(new THREE.CylinderGeometry(.82,1.05,.45,24),toriiStoneBaseMat);
+  base.position.set(x,.06,-8.3);
+  base.castShadow=base.receiveShadow=true;
+  scene.add(base);
+}
+
 
 const toriiSpot=new THREE.SpotLight(0xffd08a,1.7,34,Math.PI/5,.45,.8);
 toriiSpot.position.set(-8,15,8);
@@ -125,10 +135,10 @@ gltfLoader.load(
     const center0=new THREE.Vector3();
     box0.getSize(size0);
     box0.getCenter(center0);
-    const targetHeight=8.7;
+    const targetHeight=10.5;
     const s=size0.y>0 ? targetHeight/size0.y : 1;
     model.scale.setScalar(s);
-    model.position.set(-center0.x*s, -box0.min.y*s, -center0.z*s);
+    model.position.set(-center0.x*s, -box0.min.y*s - 0.18, -center0.z*s);
 
     realToriiRoot.add(model);
     torii.visible=false;
@@ -144,8 +154,8 @@ gltfLoader.load(
   }
 );
 
-// Genbaku Dome is kept as the lightweight procedural fallback above.
-// The previous genbaku_dome.glb model was intentionally removed because it was too heavy for mobile use.
+// 原爆ドームは軽量なThree.js内蔵モデルを使用します。
+// 重い外部GLBは読み込まないため、スマホでも軽く動きます。
 
 // lamps and trees
 const lampMat=new THREE.MeshStandardMaterial({color:0xffc879,emissive:0xff9d2e,emissiveIntensity:1.4});
