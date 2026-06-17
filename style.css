@@ -305,3 +305,53 @@
   .three-touch-help{max-width:88vw;font-size:11px;line-height:1.35;border-radius:16px;}
   .three-touch-buttons{flex-direction:column;gap:8px;width:100%;}
 }
+
+
+/* --- v9: mobile LINE hotspot and joystick-safe touch controls --- */
+.line-hero-hotspot{display:none;}
+@media(max-width:800px){
+  /* iframeは通常スクロール優先のまま、LINE部分だけ親ページ側の透明リンクで常時タップ可能にする */
+  .line-hero-hotspot{
+    display:block;
+    position:absolute;
+    z-index:7;
+    top:clamp(136px, 24.5vw, 170px);
+    right:calc((100vw - min(96vw, 420px)) / 2 + 10px);
+    width:calc(min(96vw, 420px) / 3 - 14px);
+    height:46px;
+    border-radius:0 0 13px 0;
+    pointer-events:auto;
+    background:transparent;
+  }
+  /* 3D操作中はジョイスティックを邪魔しないよう、操作ボタンを右下へ退避 */
+  .three-hero-full.three-touch-active .three-touch-controls{
+    left:auto;
+    right:10px;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
+    width:auto;
+    padding:0;
+    align-items:flex-end;
+    pointer-events:auto;
+  }
+  .three-hero-full.three-touch-active .three-touch-help,
+  .three-hero-full.three-touch-active .three-scroll-btn{
+    display:none;
+  }
+  .three-hero-full.three-touch-active .three-touch-buttons{
+    width:auto;
+    display:block;
+  }
+  .three-hero-full.three-touch-active .three-touch-btn{
+    width:auto;
+    min-width:0;
+    padding:10px 14px;
+    font-size:12px;
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+  }
+}
+@media(max-width:380px){
+  .line-hero-hotspot{
+    top:126px;
+    height:42px;
+  }
+}
