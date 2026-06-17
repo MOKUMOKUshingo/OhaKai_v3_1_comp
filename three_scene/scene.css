@@ -154,3 +154,11 @@
   .heroRibbon{font-size:10px;}
   .heroFeature b{font-size:10px;}
 }
+
+/* --- v8 refinements: make LINE feature clickable and avoid overlap on mobile --- */
+.heroFeature{color:#5e2f00;text-decoration:none;display:block;}
+.heroLineFeature{cursor:pointer;pointer-events:auto;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;}
+.heroLineFeature:hover{transform:translateY(-1px);background:rgba(235,255,242,.98);}
+@media(max-width:800px){
+  #touchHint{display:none!important;}
+}

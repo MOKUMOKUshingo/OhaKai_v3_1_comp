@@ -277,3 +277,31 @@
     text-align:center;
   }
 }
+
+/* --- v8 refinements --- */
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.three-touch-help{
+  margin:0 0 9px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.90);
+  color:#5e2f00;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 8px 22px rgba(0,0,0,.14);
+  text-align:center;
+}
+.three-touch-buttons{display:flex;gap:10px;justify-content:center;align-items:center;}
+@media(max-width:800px){
+  .three-touch-controls{
+    flex-direction:column;
+    align-items:center;
+    bottom:calc(env(safe-area-inset-bottom,0px) + 12px);
+  }
+  .three-touch-btn,.three-scroll-btn{min-width:160px;text-align:center;}
+}
+@media(max-width:420px){
+  .grid.two{grid-template-columns:1fr}
+  .three-touch-help{max-width:88vw;font-size:11px;line-height:1.35;border-radius:16px;}
+  .three-touch-buttons{flex-direction:column;gap:8px;width:100%;}
+}
