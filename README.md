@@ -67,3 +67,15 @@
 
 ## 大鳥居3Dモデル
 `assets/models/torii.glb` を `three_scene/scene.js` から読み込む構成です。位置・大きさ・向きは `realToriiRoot.position`、`realToriiRoot.rotation.y`、`targetHeight` を編集すると調整できます。
+
+
+## v3.4 変更点
+
+- サイト全体を新緑の明るい配色へ調整しました。
+- Three.js空間の空・水面・草木の色も、春〜初夏の明るい雰囲気に寄せています。
+
+
+## v3.5 updates
+- PCヘッダーにホバー式ドロップダウンを追加
+- フッターを福岡カフェ会風のカテゴリリンク構成に変更
+- 参加者の声・注意事項・キャンセル・匿名報告ページを追加

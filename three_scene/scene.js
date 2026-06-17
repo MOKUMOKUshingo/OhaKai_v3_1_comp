@@ -4,8 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const isMobileView = window.matchMedia('(max-width: 800px)').matches;
 const scene=new THREE.Scene();
-scene.background=new THREE.Color(0xf0a26a);
-scene.fog=new THREE.FogExp2(0xf0a26a,0.012);
+scene.background=new THREE.Color(0xdff9e8);
+scene.fog=new THREE.FogExp2(0xdff9e8,0.010);
 const camera=new THREE.PerspectiveCamera(70,innerWidth/innerHeight,.1,500);
 camera.position.set(isMobileView ? 0 : 1.5, 3.0, isMobileView ? 23 : 20);
 const renderer=new THREE.WebGLRenderer({antialias:true});
@@ -15,13 +15,13 @@ const miniRenderer=new THREE.WebGLRenderer({canvas:document.getElementById('mini
 miniRenderer.setSize(230,170);miniRenderer.setPixelRatio(1);
 const miniCamera=new THREE.OrthographicCamera(-34,34,25,-25,.1,100);miniCamera.position.set(0,60,0);miniCamera.lookAt(0,0,0);
 
-scene.add(new THREE.HemisphereLight(0xffddbb,0x334466,1.7));
-const sun=new THREE.DirectionalLight(0xffb15a,3.8);sun.position.set(-42,24,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);scene.add(sun);
-const fill=new THREE.DirectionalLight(0x7da6ff,.55);fill.position.set(30,12,20);scene.add(fill);
+scene.add(new THREE.HemisphereLight(0xf7ffe0,0x356044,1.9));
+const sun=new THREE.DirectionalLight(0xfff3a3,3.2);sun.position.set(-42,24,8);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);scene.add(sun);
+const fill=new THREE.DirectionalLight(0xb6ffd0,.72);fill.position.set(30,12,20);scene.add(fill);
 
 function mat(c,r=.75,m=0){return new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});}
-const stone=mat(0x8f8172,.95), darkStone=mat(0x4d4945,.95), brick=mat(0x7f5d4c,.95), toriiMat=mat(0xe33a20,.55), roofMat=mat(0x243f3a,.75), wood=mat(0x5a331f,.8), pathMat=mat(0xa58c78,.9), grassMat=mat(0x536b38,.9);
-const waterMat=new THREE.MeshStandardMaterial({color:0x126e74,roughness:.18,metalness:.25,transparent:true,opacity:.86});
+const stone=mat(0x8f8172,.95), darkStone=mat(0x4d4945,.95), brick=mat(0x7f5d4c,.95), toriiMat=mat(0xe33a20,.55), roofMat=mat(0x243f3a,.75), wood=mat(0x5a331f,.8), pathMat=mat(0xa58c78,.9), grassMat=mat(0x76a95a,.9);
+const waterMat=new THREE.MeshStandardMaterial({color:0x46a99e,roughness:.20,metalness:.18,transparent:true,opacity:.84});
 
 function box(w,h,d,x,y,z,material,group=scene){const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;group.add(o);return o;}
 function cyl(r,h,x,y,z,material,group=scene,seg=24){const o=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg),material);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;group.add(o);return o;}
@@ -35,11 +35,11 @@ for(let z=-50;z<36;z+=5){box(.12,.9,.12,11,.45,z,darkStone);box(.12,.9,.12,25,.4
 for(let z=-50;z<36;z+=2.2) box(.35,1.2,2.0,10.5,.55,z,stone);
 
 // sunset sky: sun disk and clouds
-const sunDisk=new THREE.Mesh(new THREE.SphereGeometry(3.2,32,16),new THREE.MeshBasicMaterial({color:0xffe27b}));sunDisk.position.set(-58,10,-55);scene.add(sunDisk);
-const cloudMat=new THREE.MeshBasicMaterial({color:0xffc08d,transparent:true,opacity:.65});
+const sunDisk=new THREE.Mesh(new THREE.SphereGeometry(3.2,32,16),new THREE.MeshBasicMaterial({color:0xfff09a}));sunDisk.position.set(-58,10,-55);scene.add(sunDisk);
+const cloudMat=new THREE.MeshBasicMaterial({color:0xf5ffd8,transparent:true,opacity:.60});
 for(let i=0;i<30;i++){const c=new THREE.Mesh(new THREE.SphereGeometry(1+Math.random()*2,16,8),cloudMat);c.scale.set(2.5+Math.random()*3,.25,.65);c.position.set(-40+Math.random()*90,18+Math.random()*18,-65+Math.random()*28);scene.add(c)}
 // mountains
-const mMat=mat(0x5c6070,.9);for(let i=0;i<16;i++){const cone=new THREE.Mesh(new THREE.ConeGeometry(8+Math.random()*8,10+Math.random()*8,4),mMat);cone.position.set(-70+i*10,4,-75-Math.random()*12);cone.rotation.y=Math.PI/4;scene.add(cone)}
+const mMat=mat(0x6b8f67,.9);for(let i=0;i<16;i++){const cone=new THREE.Mesh(new THREE.ConeGeometry(8+Math.random()*8,10+Math.random()*8,4),mMat);cone.position.set(-70+i*10,4,-75-Math.random()*12);cone.rotation.y=Math.PI/4;scene.add(cone)}
 
 // Atomic Bomb Dome fallback - right rear. Lightweight built-in model is used for mobile performance.
 const domeG=new THREE.Group();domeG.position.set(27,0,-32);domeG.rotation.y=-0.35;scene.add(domeG);
@@ -94,7 +94,7 @@ realToriiRoot.position.set(0,-0.42,-8.3);
 realToriiRoot.rotation.y=Math.PI; // front and close to the opening camera view
 scene.add(realToriiRoot);
 // Model base cover: lower the GLB into the water and add subtle water/stone masks so the foot texture is less visible.
-const toriiBaseCoverMat=new THREE.MeshStandardMaterial({color:0x1f6f74,roughness:.32,metalness:.18,transparent:true,opacity:.72});
+const toriiBaseCoverMat=new THREE.MeshStandardMaterial({color:0x3f9f8f,roughness:.34,metalness:.14,transparent:true,opacity:.78});
 const toriiBaseCover=new THREE.Mesh(new THREE.BoxGeometry(15.5,.32,2.9),toriiBaseCoverMat);
 toriiBaseCover.position.set(0,.06,-8.3);
 toriiBaseCover.receiveShadow=true;
@@ -160,7 +160,7 @@ gltfLoader.load(
 // lamps and trees
 const lampMat=new THREE.MeshStandardMaterial({color:0xffc879,emissive:0xff9d2e,emissiveIntensity:1.4});
 for(let z=-44;z<32;z+=9){cyl(.07,3,24,1.5,z,darkStone);const l=new THREE.PointLight(0xffa34b,1.2,12);l.position.set(24,3.2,z);scene.add(l);const bulb=new THREE.Mesh(new THREE.SphereGeometry(.32,12,8),lampMat);bulb.position.set(24,3.2,z);scene.add(bulb)}
-for(let i=0;i<34;i++){const x=28+Math.random()*20, z=-48+Math.random()*88; cyl(.22,2.7,x,1.35,z,wood);const leaf=new THREE.Mesh(new THREE.SphereGeometry(1.7+Math.random(),16,10),mat(0x27421f,.95));leaf.position.set(x,3.2,z);leaf.castShadow=true;scene.add(leaf)}
+for(let i=0;i<34;i++){const x=28+Math.random()*20, z=-48+Math.random()*88; cyl(.22,2.7,x,1.35,z,wood);const leaf=new THREE.Mesh(new THREE.SphereGeometry(1.7+Math.random(),16,10),mat(0x4f8d3d,.95));leaf.position.set(x,3.2,z);leaf.castShadow=true;scene.add(leaf)}
 
 // people walking
 const people=[];
