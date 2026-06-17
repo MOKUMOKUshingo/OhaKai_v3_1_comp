@@ -120,4 +120,25 @@ async function initInstagram(){
 }
 
 
-document.addEventListener('DOMContentLoaded',()=>{loadEvents();initThree();initInstagram();});
+
+function initThreeTouchGate(){
+  const hero = document.querySelector('#threeHero');
+  const btn = document.querySelector('#enableThreeTouch');
+  if(!hero || !btn) return;
+  const isMobile = () => window.matchMedia('(max-width: 800px)').matches;
+  function setActive(active){
+    hero.classList.toggle('three-touch-active', active);
+    btn.textContent = active ? '3D操作を終了する' : '3D空間を操作する';
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+  }
+  btn.addEventListener('click', () => {
+    if(!isMobile()) return;
+    setActive(!hero.classList.contains('three-touch-active'));
+  });
+  window.addEventListener('resize', () => {
+    if(!isMobile()) setActive(false);
+  });
+  setActive(false);
+}
+
+document.addEventListener('DOMContentLoaded',()=>{loadEvents();initThree();initInstagram();initThreeTouchGate();});

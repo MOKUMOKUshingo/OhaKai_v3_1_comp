@@ -57,3 +57,9 @@
 - 広島駅ゆるお茶会（6/20 14:00）を削除しました。
 - サッカー日本代表 応援お茶会を紙屋町に変更しました。
 - 集客用画像 `assets/images/worldcup_japan_kamiyacho.png` を追加しました。
+
+
+## スマホ版Three.js操作
+スマホでは、初期状態でThree.js iframeのタッチ操作を無効化しています。
+`3D空間を操作する` ボタンを押した時だけ iframe の `pointer-events` を有効化し、ページスクロールを邪魔しない構造にしています。
+編集箇所は `index.html` の `threeHero`、`style.css` の `Mobile Three.js touch gate`、`main.js` の `initThreeTouchGate()` です。

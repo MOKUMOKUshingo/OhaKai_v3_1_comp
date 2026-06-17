@@ -100,7 +100,7 @@
     },
     {
       "id": "ev006",
-      "title": "オンラインAI・お茶会",
+      "title": "オンラインAI・Three.jsお茶会",
       "place": "オンライン",
       "date": "2026-06-25",
       "time": "20:00",
@@ -110,9 +110,9 @@
       "fee": "無料",
       "image": {
         "src": "assets/images/event_06.svg",
-        "alt": "オンラインAI・お茶会のイメージ画像"
+        "alt": "オンラインAI・Three.jsお茶会のイメージ画像"
       },
-      "description": "AI、Web制作などをゆるく話すオンライン会です。",
+      "description": "AI、Three.js、Web制作などをゆるく話すオンライン会です。",
       "lineMessage": "6月25日のオンラインAI・Three.jsお茶会参加希望の○○です"
     }
   ]
