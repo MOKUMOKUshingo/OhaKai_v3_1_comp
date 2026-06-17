@@ -104,3 +104,96 @@
   .logo{font-size:18px;}
   .three-hero-full{height:74svh;min-height:540px;}
 }
+
+
+/* --- Instagram + service promotion --- */
+.eyebrow{
+  margin:0 0 8px;
+  color:var(--pink);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.promo-service-card{
+  margin:34px 0;
+  padding:28px;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(fff,255,255,.86));
+  background:linear-gradient(135deg,#fff,#fff4f8 58%,#fff8ed);
+  border:1px solid rgba(237,30,113,.15);
+  box-shadow:0 18px 50px rgba(72,34,0,.13);
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:22px;
+  align-items:center;
+}
+.promo-service-card h2{margin:0 0 10px;font-size:30px;color:#5e2f00;}
+.promo-service-card p{margin:0;line-height:1.85;font-weight:700;}
+.promo-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;}
+.instagram-section{
+  margin:34px 0 46px;
+  padding:28px;
+  border-radius:24px;
+  background:rgba(255,255,255,.92);
+  box-shadow:var(--shadow);
+}
+.instagram-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:18px;
+}
+.instagram-head h2{font-size:30px;margin:0 0 6px;color:#5e2f00;}
+.instagram-head p{margin:0;line-height:1.7;font-weight:700;}
+.instagram-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.instagram-post{
+  position:relative;
+  display:block;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:18px;
+  background:#fff3f8;
+  box-shadow:0 8px 18px rgba(72,34,0,.10);
+}
+.instagram-post img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .35s ease;
+}
+.instagram-post:hover img{transform:scale(1.06);}
+.instagram-post span{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  color:#5e2f00;
+  font-size:12px;
+  font-weight:900;
+  text-align:center;
+}
+.instagram-note{
+  margin:14px 0 0;
+  font-size:13px;
+  color:#7a553b;
+  font-weight:700;
+}
+.instagram-note code{background:#fff7ec;border:1px solid #eed8c3;border-radius:8px;padding:2px 6px;}
+@media(max-width:800px){
+  .promo-service-card{grid-template-columns:1fr;padding:22px;}
+  .promo-actions{justify-content:flex-start;}
+  .instagram-head{display:block;}
+  .instagram-head .btn{margin-top:14px;}
+  .instagram-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .promo-service-card h2,.instagram-head h2{font-size:24px;}
+}

@@ -98,4 +98,26 @@ function initThree(){
   function tick(t){group.rotation.y=t*.00008; cup.rotation.z=t*.0002; renderer.render(scene,camera); requestAnimationFrame(tick)} tick(0);
 }
 
-document.addEventListener('DOMContentLoaded',()=>{loadEvents();initThree();});
+
+
+async function initInstagram(){
+  const grid = document.querySelector('#instagramGrid');
+  if(!grid) return;
+  try{
+    const res = await fetch('data/instagram.json');
+    const data = await res.json();
+    const profile = data.profileUrl || 'https://www.instagram.com/yuru_ocha_kai';
+    const posts = Array.isArray(data.posts) ? data.posts : [];
+    grid.innerHTML = posts.map(post => `
+      <a class="instagram-post" href="${profile}" target="_blank" rel="noopener" aria-label="Instagramで見る">
+        <img src="${post.image}" alt="${post.alt || 'Instagram投稿画像'}" loading="lazy">
+        <span>${post.caption || data.handle || '@yuru_ocha_kai'}</span>
+      </a>
+    `).join('') || `<p>投稿画像は data/instagram.json に追加できます。</p>`;
+  }catch(e){
+    grid.innerHTML = '<p>Instagram画像を読み込めませんでした。</p>';
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded',()=>{loadEvents();initThree();initInstagram();});

@@ -26,3 +26,20 @@
 - Three.js上の文字装飾をスマホでは上部コンパクト表示に変更
 - 中部・下部の3D空間が見えるように、説明文を短縮表示
 - スマホではカメラ位置/FOVを調整し、広島空間が広く見えるように変更
+
+
+## Instagram投稿画像の差し替え
+
+トップページのInstagram欄は、`data/instagram.json` と `assets/instagram/` で管理しています。
+
+1. Instagramに載せたい画像を `assets/instagram/` に入れる
+2. `data/instagram.json` の `posts` に画像パスとキャプションを追加する
+3. GitHubにアップロードする
+
+公式Instagramリンク: https://www.instagram.com/yuru_ocha_kai
+
+## ホームページ制作代行の表示
+
+トップページとお問い合わせページに、
+「最安値、ホームページ制作代行。LINEもしくはインスタのDMにてお問い合わせください。」
+の導線を追加しています。
