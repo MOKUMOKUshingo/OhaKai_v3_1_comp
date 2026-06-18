@@ -1,0 +1,27 @@
+{
+  "profileUrl": "https://www.instagram.com/yuru_ocha_kai",
+  "handle": "@yuru_ocha_kai",
+  "note": "画像はassets/instagram/に入れて、ここに追記すると表示されます。",
+  "posts": [
+    {
+      "image": "assets/instagram/post_yuru_ochakai.png",
+      "alt": "広島ゆるお茶会 Instagram 投稿サムネイル",
+      "caption": "ゆるお茶会"
+    },
+    {
+      "image": "assets/instagram/post_event_promo.png",
+      "alt": "広島ゆるお茶会 Instagram 投稿サムネイル",
+      "caption": "イベント告知"
+    },
+    {
+      "image": "assets/instagram/post_website_mock.png",
+      "alt": "広島ゆるお茶会 Instagram 投稿サムネイル",
+      "caption": "サイト制作"
+    },
+    {
+      "image": "assets/instagram/post_original_photo.jpeg",
+      "alt": "広島ゆるお茶会 Instagram 投稿サムネイル",
+      "caption": "お茶会の雰囲気"
+    }
+  ]
+}

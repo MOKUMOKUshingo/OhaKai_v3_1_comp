@@ -1,0 +1,119 @@
+{
+  "site": {
+    "name": "広島ゆるお茶会",
+    "lineUrl": "https://line.me/R/ti/p/@006hlqez",
+    "imageFolder": "assets/images/"
+  },
+  "places": [
+    "広島駅",
+    "紙屋町",
+    "西条",
+    "呉",
+    "福山",
+    "オンライン"
+  ],
+  "events": [
+    {
+      "id": "ev_worldcup_japan_tunisia",
+      "title": "サッカー日本代表 応援お茶会",
+      "place": "紙屋町",
+      "date": "2026-06-21",
+      "time": "13:00（日本時間）",
+      "genre": "スポーツ・サッカー",
+      "age": "全年代",
+      "capacity": "8名",
+      "fee": "1,000円＋飲食代",
+      "image": {
+        "src": "assets/images/worldcup_japan_kamiyacho.png",
+        "alt": "紙屋町で開催するサッカー日本代表 応援お茶会の集客用画像"
+      },
+      "description": "紙屋町エリアのカフェで、日本 vs チュニジアを一緒に応援するスポーツ交流会です。サッカー好き・初参加・一人参加歓迎。",
+      "lineMessage": "6月21日の紙屋町サッカー日本代表 応援お茶会参加希望の○○です"
+    },
+    {
+      "id": "ev002",
+      "title": "紙屋町カフェ好きお茶会",
+      "place": "紙屋町",
+      "date": "2026-06-21",
+      "time": "15:30",
+      "genre": "カフェ好き",
+      "age": "全年代",
+      "capacity": "5名",
+      "fee": "1,000円＋飲食代",
+      "image": {
+        "src": "assets/images/event_02.svg",
+        "alt": "紙屋町カフェ好きお茶会のイメージ画像"
+      },
+      "description": "カフェ巡りが好きな方向け。おすすめのお店も交換します。",
+      "lineMessage": "6月21日の紙屋町カフェ好きお茶会参加希望の○○です"
+    },
+    {
+      "id": "ev003",
+      "title": "西条・資格勉強お茶会",
+      "place": "西条",
+      "date": "2026-06-22",
+      "time": "13:00",
+      "genre": "勉強",
+      "age": "全年代",
+      "capacity": "6名",
+      "fee": "1,000円＋飲食代",
+      "image": {
+        "src": "assets/images/event_03.svg",
+        "alt": "西条・資格勉強お茶会のイメージ画像"
+      },
+      "description": "簿記・基本情報・危険物など、資格勉強中の方が集まる会です。",
+      "lineMessage": "6月22日の西条・資格勉強お茶会参加希望の○○です"
+    },
+    {
+      "id": "ev004",
+      "title": "呉・歴史好きお茶会",
+      "place": "呉",
+      "date": "2026-06-23",
+      "time": "16:00",
+      "genre": "歴史",
+      "age": "全年代",
+      "capacity": "6名",
+      "fee": "1,000円＋飲食代",
+      "image": {
+        "src": "assets/images/event_04.svg",
+        "alt": "呉・歴史好きお茶会のイメージ画像"
+      },
+      "description": "呉・広島の歴史や観光の話をゆるく楽しむ会です。",
+      "lineMessage": "6月23日の呉・歴史好きお茶会参加希望の○○です"
+    },
+    {
+      "id": "ev005",
+      "title": "福山ゆる友達作りお茶会",
+      "place": "福山",
+      "date": "2026-06-24",
+      "time": "19:00",
+      "genre": "友達作り",
+      "age": "20代〜40代",
+      "capacity": "6名",
+      "fee": "1,000円＋飲食代",
+      "image": {
+        "src": "assets/images/event_05.svg",
+        "alt": "福山ゆる友達作りお茶会のイメージ画像"
+      },
+      "description": "仕事帰りにも参加しやすい夜のお茶会です。",
+      "lineMessage": "6月24日の福山ゆる友達作りお茶会参加希望の○○です"
+    },
+    {
+      "id": "ev006",
+      "title": "オンラインAI・Three.jsお茶会",
+      "place": "オンライン",
+      "date": "2026-06-25",
+      "time": "20:00",
+      "genre": "AI・IT",
+      "age": "全年代",
+      "capacity": "8名",
+      "fee": "無料",
+      "image": {
+        "src": "assets/images/event_06.svg",
+        "alt": "オンラインAI・Three.jsお茶会のイメージ画像"
+      },
+      "description": "AI、Three.js、Web制作などをゆるく話すオンライン会です。",
+      "lineMessage": "6月25日のオンラインAI・Three.jsお茶会参加希望の○○です"
+    }
+  ]
+}

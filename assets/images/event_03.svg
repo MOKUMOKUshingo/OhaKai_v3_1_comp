@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e9f8e8"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" rx="44" fill="url(#g)"/>
+  <circle cx="1000" cy="120" r="90" fill="#00a889" opacity=".12"/>
+  <circle cx="170" cy="540" r="120" fill="#5e2f00" opacity=".08"/>
+  <text x="80" y="150" font-family="sans-serif" font-size="44" fill="#00a889" font-weight="700">広島ゆるお茶会</text>
+  <text x="80" y="255" font-family="sans-serif" font-size="82" fill="#5e2f00" font-weight="800">西条</text>
+  <text x="80" y="360" font-family="sans-serif" font-size="42" fill="#7a4b20">ゆるく話せる少人数のお茶会</text>
+  <text x="80" y="520" font-family="sans-serif" font-size="120" fill="#00a889" opacity=".72">☕</text>
+</svg>
